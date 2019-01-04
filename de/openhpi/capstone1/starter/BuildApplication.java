@@ -1,6 +1,9 @@
 package de.openhpi.capstone1.starter;
 
 
+import java.io.File;
+
+import com.sun.java.util.jar.pack.PackerImpl;
 import de.openhpi.capstone1.controller.CounterController;
 import de.openhpi.capstone1.model.Counter;
 import de.openhpi.capstone1.view.BallView;
@@ -10,6 +13,7 @@ import de.openhpi.capstone1.view.CounterViewNumber;
 import de.openhpi.capstone1.view.Observer;
 import de.openhpi.capstone1.view.PaddleView;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 
 public class BuildApplication extends PApplet {
@@ -22,6 +26,10 @@ public class BuildApplication extends PApplet {
     private BallView ballView;
     private Counter counter;
     private int direction = 1;
+    private boolean arrowKeyPressed = false;
+    private int paddleSpeed = 0;
+
+    private PImage background;
 
     @Override
     public void settings(){
@@ -45,21 +53,43 @@ public class BuildApplication extends PApplet {
         */
 
         System.out.println(counter.getCount());
-
+        System.out.println( new File( ".").getAbsolutePath() );
+        background = loadImage("de/openhpi/capstone1/view/brickbreakerUniverseBackground.jpg");
     }
 
     @Override
     public void draw(){
         // needed even if its empty when using click events
         int count = counter.getCount();
-        background(204);
+        background(background);
         fill( 255 );
         //rect(random( 100 ), random( 100 ), 10,10  );
         //counterView.update( count );
         //counterViewColor.update( count );
         //counterViewNumber.update( count );
         //System.out.println( direction );
-        paddleView.update(direction);
+
+        /*if(keyPressed) {
+            if (key == CODED) {
+                if (keyCode == LEFT) {
+                    direction = 0;
+                    System.out.println( " <- Pressed Left Key [DirectionCode: 0] "  );
+                } else if (keyCode == RIGHT) {
+                    direction = 1;
+                    System.out.println( " -> Pressed Right Key [DirectionCode: 1]" );
+                }
+                paddleSpeed = 20;
+            } else {
+                System.out.println( "NoCodedKey Pressed" );
+                paddleSpeed = 0;
+            }
+        }else {
+            paddleSpeed = 0;
+        }*/
+
+        //paddleView.update(paddleSpeed, direction);
+
+        paddleView.update(mouseX);
         ballView.update( count );
         ballView.display( );
         ballView.checkBoundaryCollision();
@@ -69,24 +99,8 @@ public class BuildApplication extends PApplet {
 
     @Override
     public void mouseClicked() {
-        background(204);
+        background(background);
         counterController.handleEvent();
     }
 
-    @Override
-    public void keyPressed() {
-        if (key == CODED) {
-            if (keyCode == LEFT) {
-                direction = 0;
-                //paddleView.update( 0);
-                System.out.println( " <- Pressed Left Key [DirectionCode: 0] "  );
-            } else if (keyCode == RIGHT) {
-                direction = 1;
-                //paddleView.update( 1);
-                System.out.println( " -> Pressed Right Key [DirectionCode: 1]" );
-            }
-        } else {
-            System.out.println( "NoCodedKey Pressed" );
-        }
-    }
 }

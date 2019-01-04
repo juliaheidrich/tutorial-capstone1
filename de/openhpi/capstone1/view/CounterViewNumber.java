@@ -12,7 +12,6 @@ public class CounterViewNumber extends Observer {
         update( "0" );
     }
 
-    @Override
     public void update(Object value) {
         try {
             display.fill(0);

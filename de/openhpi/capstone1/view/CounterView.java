@@ -12,7 +12,6 @@ public class CounterView extends Observer {
         update(0);
     }
 
-    @Override
     public void update(Object value){
         try{
             int x = (int) value;

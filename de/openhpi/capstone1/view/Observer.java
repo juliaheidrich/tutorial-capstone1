@@ -12,6 +12,6 @@ public abstract class Observer {
         this.display = display;
     }
 
-    public abstract void update(Object value);
+    //public abstract void update(Object value);
 
 }

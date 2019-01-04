@@ -11,7 +11,6 @@ public class CounterViewColor extends Observer {
         update(0);
     }
 
-    @Override
     public void update(Object value){
         try{
             int[] colors = new int[3];
