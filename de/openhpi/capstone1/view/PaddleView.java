@@ -7,7 +7,10 @@ import processing.core.PApplet;
 public class PaddleView extends Observer {
 
     public int xPosition = 1;
-    private int speed = 10;
+    public int yPosition = 485;
+    public int paddleHeight = 15;
+    public int paddleWidth = 100;
+    private int speed = 5;
     private int maxXPosition = 500 - 100;
 
     public PaddleView ( PApplet display) {
@@ -18,9 +21,7 @@ public class PaddleView extends Observer {
     @Override
     public void update(Object direction){
 
-        //boolean blubb = (boolean) direction;
-
-        // ToDo: if paddle on 0 or maxXPosition then change the direction
+        // ToDo?: if paddle on 0 or maxXPosition then change the direction
         int xDirection = (int) direction;
 
         if(xDirection == 1 && xPosition <= maxXPosition) {
@@ -30,7 +31,7 @@ public class PaddleView extends Observer {
         }
 
         display.fill(120, 50, 240);
-        display.rect( xPosition , 450,100, 15 );
+        display.rect( xPosition , yPosition,paddleWidth, paddleHeight );
         display.redraw();
 
     }

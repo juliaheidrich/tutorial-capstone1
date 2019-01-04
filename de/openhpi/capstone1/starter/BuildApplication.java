@@ -3,6 +3,7 @@ package de.openhpi.capstone1.starter;
 
 import de.openhpi.capstone1.controller.CounterController;
 import de.openhpi.capstone1.model.Counter;
+import de.openhpi.capstone1.view.BallView;
 import de.openhpi.capstone1.view.CounterView;
 import de.openhpi.capstone1.view.CounterViewColor;
 import de.openhpi.capstone1.view.CounterViewNumber;
@@ -18,6 +19,7 @@ public class BuildApplication extends PApplet {
     private Observer counterViewNumber;
     private CounterController counterController;
     private PaddleView paddleView;
+    private BallView ballView;
     private Counter counter;
     private int direction = 1;
 
@@ -34,7 +36,8 @@ public class BuildApplication extends PApplet {
         counter = new Counter();
         counterController = new CounterController( counter );
         paddleView = new PaddleView( this );
-        counterView = new CounterView( this );
+        ballView = new BallView( this );
+        //counterView = new CounterView( this );
         //counterViewColor = new CounterViewColor( this);
         //counterViewNumber = new CounterViewNumber( this);
         /*fill(120, 50, 240);
@@ -52,11 +55,15 @@ public class BuildApplication extends PApplet {
         background(204);
         fill( 255 );
         //rect(random( 100 ), random( 100 ), 10,10  );
-        counterView.update( count );
+        //counterView.update( count );
         //counterViewColor.update( count );
         //counterViewNumber.update( count );
         //System.out.println( direction );
         paddleView.update(direction);
+        ballView.update( count );
+        ballView.display( );
+        ballView.checkBoundaryCollision();
+        ballView.checkPaddleCollision( paddleView );
 
     }
 
