@@ -6,20 +6,25 @@ import processing.core.PApplet;
 
 
 public class CounterView extends Observer {
-    Counter counter;
 
-    public CounterView( PApplet display, Counter subject ) {
-        super(display, subject);
-        this.counter = subject;
-        update();
+    public CounterView( PApplet display) {
+        super(display);
+        update(0);
     }
 
     @Override
-    public void update(){
-        display.background(204);
-        display.fill(120, 50, 240);
-        display.rect(counter.getCount() +1, 40, 100, 100);
-        display.redraw();
+    public void update(Object value){
+        try{
+            int x = (int) value;
+
+            display.fill(120, 50, 240);
+            display.rect(x +1, 40, 100, 100);
+            display.redraw();
+        } catch (ClassCastException error){
+            System.out.println( error.getMessage() );
+        }
+
+
 
     }
 }

@@ -10,7 +10,7 @@ public class CounterController {
     }
 
     public void handleEvent() {
-        counter.setCount( counter.getCount() +1 );
+        counter.updateCount();
         System.out.println( counter.getCount() );
 
     }
