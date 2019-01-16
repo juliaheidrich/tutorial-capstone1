@@ -1,4 +1,4 @@
-package de.openhpi.capstone1.starter;
+package de.openhpi.breakout.starter;
 
 import processing.core.PApplet;
 

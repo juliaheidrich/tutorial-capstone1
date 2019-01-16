@@ -1,7 +1,6 @@
-package de.openhpi.capstone1.view;
+package de.openhpi.breakout.view;
 
 
-import de.openhpi.capstone1.model.Subject;
 import processing.core.PApplet;
 
 
