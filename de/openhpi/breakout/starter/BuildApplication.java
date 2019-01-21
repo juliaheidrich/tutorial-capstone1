@@ -13,7 +13,6 @@ public class BuildApplication extends PApplet {
     private BallView ballView;
     private CollisionController collisionController;
 
-
     private PImage background;
 
     @Override
@@ -40,7 +39,7 @@ public class BuildApplication extends PApplet {
         fill( 255 );
 
         paddleView.update(mouseX);
-        ballView.update(  );
+        ballView.update();
         ballView.display();
         collisionController.checkBoundaryCollision();
         collisionController.checkPaddleCollision();
